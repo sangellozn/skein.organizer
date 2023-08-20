@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="66acafde-1411-43db-b45c-d50df65fa498" activeEnvironment="Default" name="Skein Organizer" resourceRoot="" soapui-version="5.7.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="ebe40d81-b6fa-48f1-87b6-3e84e3da1f6c" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="api" path="/api" id="9f7cf933-2044-4155-8399-a2f9ba45da3c"><con:settings/><con:parameters/><con:resource name="brands" path="brands" id="7d0ac751-bb51-4698-929f-4f9137167ad2"><con:settings/><con:parameters/><con:resource name="{id}" path="{id}" id="53a072c8-dd30-403b-ae15-28aa9933e384"><con:settings/><con:parameters><con:parameter><con:name>id</con:name><con:value>id</con:value><con:style>TEMPLATE</con:style><con:default>id</con:default></con:parameter></con:parameters><con:method name="getById" id="80b998d2-7739-45b7-a2a4-99aebb4df893" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:c06="http://localhost/api/brands/5c06c5b9-a7fc-4e3b-b38f-b7b6f6d522b8">c06:Response</con:element></con:representation><con:request name="Request 1" id="3b149303-b91e-40fa-8b3e-3e3c30629252" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/brands/5c06c5b9-a7fc-4e3b-b38f-b7b6f6d522b8</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="5c06c5b9-a7fc-4e3b-b38f-b7b6f6d522b8" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:request></con:method><con:method name="update" id="211791ae-418a-4000-9be8-08a7028cc028" method="PUT"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/x-www-form-urlencoded</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/problem+json</con:mediaType><con:status>415</con:status><con:params/><con:element xmlns:c06="http://localhost/api/brands/5c06c5b9-a7fc-4e3b-b38f-b7b6f6d522b8">c06:Fault</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="3f9e82d4-492f-4011-ade9-828a2b510dc4" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+   "id": "5c06c5b9-a7fc-4e3b-b38f-b7b6f6d522b8",
+   "name": "J&amp;P Coats"
+}</con:request><con:originalUri>http://localhost/api/brands/5c06c5b9-a7fc-4e3b-b38f-b7b6f6d522b8</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="5c06c5b9-a7fc-4e3b-b38f-b7b6f6d522b8" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:request></con:method><con:method name="delete" id="b5c4deb6-4255-49bc-bd82-9418d4fa0b3e" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:request name="Request 1" id="b57f69ff-0b03-4724-861c-cdf891b62457" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/brands/7451792c-b7ab-4a7b-98ed-701a6ed6c9bf</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="7451792c-b7ab-4a7b-98ed-701a6ed6c9bf" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:request></con:method></con:resource><con:method name="findAll" id="d2a1be19-9782-4e65-b2bc-82548b1f7b09" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="3db7e978-b33b-40e0-984a-2c5ec8c31ed4" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/brands</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="create" id="872bbc90-da7b-4978-af8e-906cf9a9b139" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>409</con:status><con:params/><con:element xmlns:bran="http://localhost/api/brands">bran:Fault</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:bran="http://localhost/api/brands">bran:Response</con:element></con:representation><con:request name="Request 1" id="1bfa3a37-85b4-42d9-a0a9-c3343e86cb1e" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+   "name": "J&amp;P Coats 2"
+}</con:request><con:originalUri>http://localhost/api/brands</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="usage-configs" path="usage-configs" id="737567df-8145-4183-b394-39a61f377bf8"><con:settings/><con:parameters/><con:method name="findAll" id="7c8cf9f1-7d5b-4d1e-9d7c-9986f8a6ab81" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>500</con:status><con:params/><con:element xmlns:usag="http://localhost/api/usage-configs">usag:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="9160dde2-28cc-4d1a-adc7-4b10228e25e2" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/usage-configs</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="create" id="dcc85fd5-bf29-4a3f-8ab4-b65cc7fc288c" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400 500</con:status><con:params/><con:element xmlns:usag="http://localhost/api/usage-configs">usag:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/problem+json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:usag="http://localhost/api/usage-configs">usag:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:usag="http://localhost/api/usage-configs">usag:Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="%" id="196056fd-f46e-406b-b607-d9aeb253c379" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+	"name": "Pourcentage (%)",
+	"usageConfigValues": [
+		{
+			"name": "0 %",
+			"numericValue": 0,
+			"order": 0
+		},
+		{
+			"name": "10 %",
+			"numericValue": 10,
+			"order": 1
+		},
+		{
+			"name": "20 %",
+			"numericValue": 20,
+			"order": 2
+		},
+		{
+			"name": "30 %",
+			"numericValue": 30,
+			"order": 3
+		},
+		{
+			"name": "40 %",
+			"numericValue":40,
+			"order": 4
+		},
+		{
+			"name": "50 %",
+			"numericValue": 50,
+			"order": 5
+		},
+		{
+			"name": "60 %",
+			"numericValue": 60,
+			"order": 6
+		},
+		{
+			"name": "70 %",
+			"numericValue": 70,
+			"order": 7
+		},
+		{
+			"name": "80 %",
+			"numericValue": 80,
+			"order": 8
+		},
+		{
+			"name": "90 %",
+			"numericValue": 90,
+			"order": 9
+		},
+		{
+			"name": "100 %",
+			"numericValue": 100,
+			"order": 10
+		}
+	]
+}</con:request><con:originalUri>http://localhost/api/usage-configs</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request><con:request name="Mètres" id="196056fd-f46e-406b-b607-d9aeb253c379" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Content-type" value="application/json; charset=utf-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+	"name": "Longueur (mètres)",
+	"usageConfigValues": [
+		{
+			"name": "0 m",
+			"numericValue": 0,
+			"order": 0
+		},
+		{
+			"name": "1 m",
+			"numericValue": 1,
+			"order": 1
+		},
+		{
+			"name": "2 m",
+			"numericValue": 2,
+			"order": 2
+		},
+		{
+			"name": "3 m",
+			"numericValue": 3,
+			"order": 3
+		},
+		{
+			"name": "4 m",
+			"numericValue": 4,
+			"order": 4
+		},
+		{
+			"name": "5 m",
+			"numericValue": 5,
+			"order": 5
+		},
+		{
+			"name": "6 m",
+			"numericValue": 6,
+			"order": 6
+		},
+		{
+			"name": "7 m",
+			"numericValue": 7,
+			"order": 7
+		},
+		{
+			"name": "8 m",
+			"numericValue": 8,
+			"order": 8
+		},
+		{
+			"name": "9 m",
+			"numericValue": 9,
+			"order": 9
+		},
+		{
+			"name": "10 m",
+			"numericValue": 10,
+			"order": 10
+		}
+	]
+}</con:request><con:originalUri>http://localhost/api/usage-configs</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request><con:request name="Niveau" id="196056fd-f46e-406b-b607-d9aeb253c379" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Content-type" value="application/json; charset=utf-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+	"name": "Longueur (niveau)",
+	"usageConfigValues": [
+		{
+			"name": "Aucun",
+			"numericValue": 0,
+			"order": 0
+		},
+		{
+			"name": "Bas",
+			"numericValue": 30,
+			"order": 1
+		},
+		{
+			"name": "Moyen",
+			"numericValue": 66,
+			"order": 2
+		},
+		{
+			"name": "Complet",
+			"numericValue": 100,
+			"order": 3
+		}
+	]
+}</con:request><con:originalUri>http://localhost/api/usage-configs</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:method name="Method 1" id="86df2598-97a3-4544-9112-861a42172170" method="GET"><con:settings/><con:parameters/><con:request name="Request 1" id="40faefd0-fa11-4952-b74f-178707e06221" mediaType="application/json"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
