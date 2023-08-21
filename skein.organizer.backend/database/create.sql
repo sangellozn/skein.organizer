@@ -11,9 +11,11 @@ create table collection (id varchar(36) not null,
 );
 
 create table skein (color varchar(6) not null, 
-	number varchar(25) not null, 
+	number_value varchar(25) not null, 
 	id varchar(36) not null, 
 	description varchar(150) not null, 
+	discontinued bool not null,
+	order_value integer not null,
 	primary key (id)
 );
 
@@ -32,7 +34,7 @@ create table usage_config (id varchar(36) not null,
 create table usage_config_value (order_value smallint not null, 
 	numeric_value bigint not null, 
 	id varchar(36) not null, 
-	usage_config_id varchar(36), 
+	usage_config_id varchar(36) not null, 
 	name varchar(150) not null, 
 	primary key (id),
 	foreign key (usage_config_id) references usage_config(id)
@@ -40,14 +42,16 @@ create table usage_config_value (order_value smallint not null,
 
 create table skein_possession (collection_id varchar(36), 
 	id varchar(36) not null, 
-	skein_id varchar(36), 
-	usage_config_value_id varchar(36), 
-	user_info_id varchar(36), 
+	skein_id varchar(36) not null, 
+	usage_config_value_id varchar(36) not null, 
+	user_info_id varchar(36) not null, 
+	stock integer not null,
 	primary key (id),
 	foreign key (collection_id) references collection(id),
 	foreign key (skein_id) references skein(id),
 	foreign key (usage_config_value_id) references usage_config_value(id),
-	foreign key (user_info_id) references user_info(id)
+	foreign key (user_info_id) references user_info(id),
+	check(stock >= 0)
 );
 
 create table user_info (last_connection timestamp, 
@@ -60,8 +64,8 @@ create table user_info (last_connection timestamp,
 
 create table user_collection (collection_id varchar(36), 
 	id varchar(36) not null, 
-	usage_config_id varchar(36), 
-	user_info_id varchar(36), 
+	usage_config_id varchar(36) not null, 
+	user_info_id varchar(36) not null, 
 	name varchar(150) not null, 
 	primary key (id),
 	foreign key (collection_id) references collection(id),

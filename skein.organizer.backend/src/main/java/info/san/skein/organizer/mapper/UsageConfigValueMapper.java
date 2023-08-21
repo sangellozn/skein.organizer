@@ -5,11 +5,12 @@ import java.util.Collection;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValueMappingStrategy;
 
 import info.san.skein.organizer.model.UsageConfigValue;
 import info.san.skein.organizer.rest.dto.model.UsageConfigDto.UsageConfigValueDto;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", nullValueIterableMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
 public interface UsageConfigValueMapper {
 
 	UsageConfigValueDto map(UsageConfigValue usageConfigValue);

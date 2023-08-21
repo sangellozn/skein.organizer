@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OrderBy;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,9 +27,10 @@ public class Collection {
 	private String name;
 	
 	@ManyToMany
+	@OrderBy("order_value")
 	private Set<Skein> skeins;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Brand brand;
 	
 }

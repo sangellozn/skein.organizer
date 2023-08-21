@@ -28,7 +28,7 @@ public class UsageConfigValue {
 	@Column(name = "numeric_value", nullable = false)
 	private Long numericValue;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private UsageConfig usageConfig;
 
 }

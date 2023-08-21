@@ -21,7 +21,7 @@ public class Skein {
     @Column(name = "id", nullable = false, length = 36)
 	private String id;
 	
-    @Column(name = "number", nullable = false, length = 25)
+    @Column(name = "number_value", nullable = false, length = 25)
 	private String number;
 	
     @Column(name = "description", nullable = false, length = 150)
@@ -29,6 +29,12 @@ public class Skein {
 	
     @Column(name = "color", nullable = false, length = 6)
 	private String color;
+    
+    @Column(name = "discontinued", nullable = false)
+    private boolean discontinued;
+    
+    @Column(name = "order_value", nullable = false)
+    private int order;
     
     @ManyToMany(mappedBy = "skeins")
     private Set<Collection> collections;

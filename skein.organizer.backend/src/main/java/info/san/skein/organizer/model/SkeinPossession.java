@@ -19,16 +19,19 @@ public class SkeinPossession {
     @Column(name = "id", nullable = false, length = 36)
 	private String id;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Collection collection;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Skein skein;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private User user;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private UsageConfigValue usageConfigValue;
+	
+	@Column(name = "stock", nullable = false)
+	private int stock;
 	
 }

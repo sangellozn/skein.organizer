@@ -5,11 +5,12 @@ import java.util.Collection;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValueMappingStrategy;
 
 import info.san.skein.organizer.model.Brand;
 import info.san.skein.organizer.rest.dto.model.BrandDto;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", nullValueIterableMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
 public interface BrandMapper {
 	
 	BrandDto map(Brand brand);

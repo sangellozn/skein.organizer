@@ -22,13 +22,13 @@ public class UserCollection {
 	@Column(name = "name", nullable = false, length = 150)
 	private String name;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private User user;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Collection collection;
 	
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private UsageConfig usageConfig;
 
 }
