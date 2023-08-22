@@ -1,11 +1,16 @@
 package info.san.skein.organizer.model;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +28,7 @@ public class UserCollection {
 	private String name;
 	
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "user_info_id")
 	private User user;
 	
 	@ManyToOne(optional = false)
@@ -30,5 +36,8 @@ public class UserCollection {
 	
 	@ManyToOne(optional = false)
 	private UsageConfig usageConfig;
+	
+	@OneToMany(mappedBy = "userCollection")
+	private Set<SkeinPossession> skeinPossessions = new LinkedHashSet<>();
 
 }

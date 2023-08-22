@@ -40,6 +40,8 @@ public interface CollectionMapper {
 	CollectionDto.SkeinDto map(Skein skein);
 	
 	@Mapping(target = "collections", ignore = true)
+	@Mapping(target = "discontinued", ignore = true)
+	@Mapping(target = "order", ignore = true)
 	Skein map(CollectionDto.SkeinDto skeinDto);
 
 }

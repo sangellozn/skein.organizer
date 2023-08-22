@@ -20,13 +20,10 @@ public class SkeinPossession {
 	private String id;
 	
 	@ManyToOne(optional = false)
-	private Collection collection;
-	
-	@ManyToOne(optional = false)
 	private Skein skein;
 	
 	@ManyToOne(optional = false)
-	private User user;
+	private UserCollection userCollection;
 	
 	@ManyToOne(optional = false)
 	private UsageConfigValue usageConfigValue;

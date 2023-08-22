@@ -2,6 +2,7 @@ package info.san.skein.organizer.service.impl;
 
 import java.util.Collection;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,22 +61,19 @@ public class UsageConfigServiceImpl implements IUsageConfigService {
 	@Override
 	@Transactional
 	public void update(UsageConfigDto usageConfigDto) {
-		// TODO Auto-generated method stub
-		
+		throw new NotImplementedException();
 	}
 
 	@Override
 	@Transactional
 	public void deleteById(String id) {
-		// TODO Check if used by any user for its collection
-		
+		throw new NotImplementedException();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public UsageConfigDto getById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return usageConfigMapper.map(usageConfigRepository.getReferenceById(id));
 	}
 
 	@Override

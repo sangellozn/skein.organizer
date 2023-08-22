@@ -40,17 +40,16 @@ create table usage_config_value (order_value smallint not null,
 	foreign key (usage_config_id) references usage_config(id)
 );
 
-create table skein_possession (collection_id varchar(36), 
+create table skein_possession (
 	id varchar(36) not null, 
 	skein_id varchar(36) not null, 
 	usage_config_value_id varchar(36) not null, 
-	user_info_id varchar(36) not null, 
+	user_collection_id varchar(36) not null,
 	stock integer not null,
 	primary key (id),
-	foreign key (collection_id) references collection(id),
 	foreign key (skein_id) references skein(id),
 	foreign key (usage_config_value_id) references usage_config_value(id),
-	foreign key (user_info_id) references user_info(id),
+	foreign key (user_collection_id) references user_collection(id),
 	check(stock >= 0)
 );
 
@@ -74,3 +73,5 @@ create table user_collection (collection_id varchar(36),
 );
 
 create unique index idx_brand_unique_name on brand(name);
+
+create unique index idx_user_info_login on user_info(login);
