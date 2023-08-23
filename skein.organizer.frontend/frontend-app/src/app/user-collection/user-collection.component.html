@@ -1,0 +1,9 @@
+<p-toolbar>
+    <div class="p-toolbar-group-start">
+        <p-button *ngFor="let userCollection of userCollections" label="{{userCollection.name}} ({{userCollection.collection.name}} - {{userCollection.collection.brand.name}})" 
+        icon="pi pi-book" styleClass="p-button-success" title="{{userCollection.usageConfig.name}}"></p-button>
+    </div>
+    <div class="p-toolbar-group-end">
+        <p-button icon="pi pi-plus" class="mr-2" title="Ajouter une collection"></p-button>
+    </div>
+</p-toolbar>

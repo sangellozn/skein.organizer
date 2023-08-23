@@ -1,0 +1,6 @@
+<div class="text-center">
+    <p>Choisir un utilisateur ci dessous pour voir ses collections :</p>
+    <p-progressSpinner *ngIf="userInfos.length == 0"></p-progressSpinner>
+    <p-button label="{{userInfo.name}}" *ngFor="let userInfo of userInfos" title="Login : {{userInfo.login}}"
+        routerLink="/organizer/{{userInfo.id}}/collections"></p-button>
+</div>
