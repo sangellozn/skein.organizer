@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Collection } from '../beans/collection';
 import { SkeinPossession } from '../beans/skein-possession';
 import { UsageConfig } from '../beans/usage-config';
 import { UserCollection } from '../beans/user-collection';
+import { CollectionService } from '../services/collection.service';
 import { SkeinPossessionService } from '../services/skein-possession.service';
 import { UsageConfigService } from '../services/usage-config.service';
 import { UserCollectionService } from '../services/user-collection.service';
@@ -16,18 +18,24 @@ export class UserCollectionComponent implements OnInit {
 
   userCollections: UserCollection[] = [];
   skeinPossessions: SkeinPossession[] = [];
+  collections: Collection[] = [];
   showLoading: boolean = false;
+  showAddCollection: boolean = false;
   usageConfig: UsageConfig;
+  usageConfigs: UsageConfig[] = [];
 
   constructor(private userCollectionService: UserCollectionService,
     private usageConfigService: UsageConfigService,
     private skeinPossessionService: SkeinPossessionService,
+    private collectionService: CollectionService,
     private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     const userId = this.route.snapshot.paramMap.get('id') || '';
     this.userCollectionService.getUserCollections(userId).subscribe(userCollections => this.userCollections = userCollections);
+    this.collectionService.getCollections().subscribe(collections => this.collections = collections);
+    this.usageConfigService.getUsageConfigs().subscribe(usageConfigs => this.usageConfigs = usageConfigs);
   }
 
   onChange(skeinPossession: SkeinPossession): void {

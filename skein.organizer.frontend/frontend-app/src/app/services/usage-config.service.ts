@@ -19,6 +19,10 @@ export class UsageConfigService extends AbstractAppService {
     super(http, messageService);
   }
 
+  getUsageConfigs(): Observable<UsageConfig[]> {
+    return this.http.get<UsageConfig[]>(`${this.usageConfigUrl}`).pipe(catchError(this.throwError()));
+  }
+
   getUsageConfig(id: string): Observable<UsageConfig> {
     return this.http.get<UsageConfig>(`${this.usageConfigUrl}/${id}`).pipe(catchError(this.throwError()));
   }

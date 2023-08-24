@@ -22,7 +22,6 @@ public interface CollectionMapper {
 	}
 	
 	@Mapping(target = "skeins", ignore = true)
-	@Mapping(target = "brand", ignore = true)
 	CollectionDto mapSmall(Collection collection);
 	
 	default java.util.Collection<CollectionDto> mapSmall(java.util.Collection<Collection> collection) {

@@ -20,6 +20,8 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+import { DividerModule } from 'primeng/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -49,7 +51,9 @@ import { UserCollectionComponent } from './user-collection/user-collection.compo
     FormsModule,
     DropdownModule,
     InputTextModule,
-    TagModule
+    TagModule,
+    DialogModule,
+    DividerModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
