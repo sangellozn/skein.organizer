@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,6 +14,12 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -35,7 +42,14 @@ import { UserCollectionComponent } from './user-collection/user-collection.compo
     ProgressSpinnerModule,
     ToastModule,
     AppRoutingModule,
-    ToolbarModule
+    ToolbarModule,
+    TableModule,
+    ScrollTopModule,
+    InputNumberModule,
+    FormsModule,
+    DropdownModule,
+    InputTextModule,
+    TagModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

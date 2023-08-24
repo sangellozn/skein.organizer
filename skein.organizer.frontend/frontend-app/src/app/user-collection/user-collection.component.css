@@ -1,0 +1,8 @@
+.skein-color {
+    width: 100%;
+    height: 30px;
+}
+
+.skein-discontinued {
+    text-decoration: line-through;
+}

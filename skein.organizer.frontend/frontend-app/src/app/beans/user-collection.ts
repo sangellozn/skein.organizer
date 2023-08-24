@@ -1,4 +1,5 @@
 import { Collection } from "./collection";
+import { SkeinPossession } from "./skein-possession";
 import { UsageConfig } from "./usage-config";
 
 export class UserCollection {
@@ -7,5 +8,6 @@ export class UserCollection {
     name: string;
     collection: Collection;
     usageConfig: UsageConfig;
+    skeinPossessions: SkeinPossession[];
 
 }

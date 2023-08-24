@@ -13,14 +13,18 @@ import { UserCollection } from '../beans/user-collection';
 })
 export class UserCollectionService extends AbstractAppService {
 
-  private urlUserInfos = `${environment.baseUrl}/user-infos`;
+  private userInfosUrl = `${environment.baseUrl}/user-infos`;
 
   constructor(http: HttpClient, messageService: MessageService) {
     super(http, messageService);
   }
 
   getUserCollections(id: string): Observable<UserCollection[]> {
-    return this.http.get<UserCollection[]>(`${this.urlUserInfos}/${id}/collections?responseSize=SMALL`).pipe(catchError(this.throwError()));
+    return this.http.get<UserCollection[]>(`${this.userInfosUrl}/${id}/collections`).pipe(catchError(this.throwError()));
+  }
+
+  getSkeinPossession(id: string, collectionId: string): Observable<UserCollection> {
+    return this.http.get<UserCollection>(`${this.userInfosUrl}/${id}/collections/${collectionId}`).pipe(catchError(this.throwError()));
   }
 
 }

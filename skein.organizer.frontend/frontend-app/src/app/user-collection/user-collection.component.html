@@ -1,9 +1,62 @@
 <p-toolbar>
     <div class="p-toolbar-group-start">
         <p-button *ngFor="let userCollection of userCollections" label="{{userCollection.name}} ({{userCollection.collection.name}} - {{userCollection.collection.brand.name}})" 
-        icon="pi pi-book" styleClass="p-button-success" title="{{userCollection.usageConfig.name}}"></p-button>
+        icon="pi pi-book" styleClass="p-button-success" title="{{userCollection.usageConfig.name}}" (click)="selectCollection(userCollection.id)"></p-button>
     </div>
     <div class="p-toolbar-group-end">
         <p-button icon="pi pi-plus" class="mr-2" title="Ajouter une collection"></p-button>
     </div>
 </p-toolbar>
+<div>
+    <div class="text-center mt-3">
+        <p-progressSpinner *ngIf="showLoading"></p-progressSpinner>
+    </div>
+    <p *ngIf="!skeinPossessions.length && !showLoading">Sélectionner une collection ci dessus.</p>
+    <p-table 
+        #tableSkeinPossessions
+        [value]="skeinPossessions"
+        [globalFilterFields]="['skein.number', 'skein.description']"
+        *ngIf="skeinPossessions.length" styleClass="p-datatable-striped mt-4">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <button pButton label="Effacer" class="p-button-outlined" icon="pi pi-filter-slash" (click)="tableSkeinPossessions.clear()"></button>
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="tableSkeinPossessions.filterGlobal($any($event.target).value, 'contains')" 
+                        placeholder="Rechercher" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Numéro</th>
+                <th>Nom</th>
+                <th class="w-2">Couleur</th>
+                <th class="w-2">Utilisation courante</th>
+                <th>Stock</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-skeinPossession>
+            <tr class="{{skeinPossession.skein.discontinued ? 'skein-discontinued' : ''}}">
+                <td id="skein-{{skeinPossession.skein.number}}">{{ skeinPossession.skein.number }}</td>
+                <td>{{ skeinPossession.skein.description }}</td>
+                <td><div class="skein-color" style="{{'background-color: #' + skeinPossession.skein.color}}"></div></td>
+                <td><p-dropdown [options]="usageConfig.usageConfigValues" [(ngModel)]="skeinPossession.usageConfigValue.id" optionLabel="name" optionValue="id"
+                    styleClass="w-full" (onChange)="onChange(skeinPossession)"></p-dropdown></td>
+                <td><p-inputNumber [(ngModel)]="skeinPossession.stock" [min]="0" (onBlur)="onChange(skeinPossession)"> </p-inputNumber></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                Il y a {{skeinPossessions ? skeinPossessions.length : 0}} échevettes dans cette collection.
+            </div>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">Aucun résultat.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+</div>

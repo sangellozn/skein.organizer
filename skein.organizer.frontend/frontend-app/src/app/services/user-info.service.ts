@@ -15,14 +15,14 @@ import { AbstractAppService } from './abstract-app.service';
 })
 export class UserInfoService extends AbstractAppService {
 
-  private urlUserInfos = `${environment.baseUrl}/user-infos`;
+  private userInfosUrl = `${environment.baseUrl}/user-infos`;
 
   constructor(http: HttpClient, messageService: MessageService) {
     super(http, messageService);
   }
 
   getUserInfos(): Observable<UserInfo[]> {
-    return this.http.get<UserInfo[]>(this.urlUserInfos + "?responseSize=SMALL").pipe(catchError(this.throwError()));
+    return this.http.get<UserInfo[]>(this.userInfosUrl + "?responseSize=SMALL").pipe(catchError(this.throwError()));
   }
 
 }
