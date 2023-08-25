@@ -1,10 +1,10 @@
 <p-toolbar>
     <div class="p-toolbar-group-start">
         <p-button *ngFor="let userCollection of userCollections" label="{{userCollection.name}} ({{userCollection.collection.name}} - {{userCollection.collection.brand.name}})" 
-        icon="pi pi-book" styleClass="p-button-success" title="{{userCollection.usageConfig.name}}" (click)="selectCollection(userCollection.id)"></p-button>
+        icon="pi pi-book" styleClass="p-button-success mr-2" title="{{userCollection.usageConfig.name}}" (click)="selectCollection(userCollection.id)"></p-button>
     </div>
     <div class="p-toolbar-group-end">
-        <p-button icon="pi pi-plus" class="mr-2" title="Ajouter une collection" (onClick)="this.showAddCollection = true"></p-button>
+        <p-button icon="pi pi-plus" class="mr-2" title="Ajouter une collection" (onClick)="showAddCollectionPopin()"></p-button>
     </div>
 </p-toolbar>
 <div>
@@ -61,14 +61,17 @@
 <p-dialog header="Ajouter une collection" [(visible)]="showAddCollection" 
     [modal]="true"
     [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-    <form>
+    <form (ngSubmit)="onSubmitAddCollection(addCollectionForm)" #addCollectionForm="ngForm">
         <div class="flex flex-column gap-2">
+            <span class="text-xs required">Tous les champs sont obligatoires</span>
             <label for="name">Nom de la collection</label>
-            <input id="name" type="text" pInputText  />
+            <input id="name" name="name" type="text" pInputText [(ngModel)]="userCollectionCreate.name" [required]="true">
             <label for="configuration">Configuration d'usage</label>
-            <p-dropdown id="configuration" [options]="usageConfigs" optionLabel="name" optionValue="id"></p-dropdown>
+            <p-dropdown id="configuration" name="usageConfigId" [options]="usageConfigs" optionLabel="name" optionValue="id"
+                [(ngModel)]="userCollectionCreate.usageConfigId"></p-dropdown>
             <label for="collections">Type de la collection</label>
-            <p-dropdown id="collections" [options]="collections" optionValue="id" optionLabel="name">
+            <p-dropdown id="collections" [options]="collections" name="collectionId" optionValue="id" optionLabel="name"
+                [(ngModel)]="userCollectionCreate.collectionId">
                 <ng-template let-collection pTemplate="item">
                     <div>
                         {{collection.name}} - {{collection.brand.name}}
@@ -78,8 +81,8 @@
         </div>
         <p-divider></p-divider>
         <div class="mt-3 text-center">
-            <p-button label="Annuler" (click)="showAddCollection = false" styleClass="p-button-outlined p-button-danger mr-3"></p-button>
-            <p-button label="Ajouter"></p-button>
+            <p-button label="Annuler" (click)="onAnnulerClick(addCollectionForm)" styleClass="p-button-outlined p-button-danger mr-3"></p-button>
+            <button type="submit" pButton label="Ajouter" [disabled]="!addCollectionForm.form.valid"></button>
         </div>
     </form>
 </p-dialog>

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Collection } from '../beans/collection';
 import { SkeinPossession } from '../beans/skein-possession';
 import { UsageConfig } from '../beans/usage-config';
 import { UserCollection } from '../beans/user-collection';
+import { UserCollectionCreate } from '../beans/user-collection-create';
 import { CollectionService } from '../services/collection.service';
 import { SkeinPossessionService } from '../services/skein-possession.service';
 import { UsageConfigService } from '../services/usage-config.service';
@@ -23,6 +25,7 @@ export class UserCollectionComponent implements OnInit {
   showAddCollection: boolean = false;
   usageConfig: UsageConfig;
   usageConfigs: UsageConfig[] = [];
+  userCollectionCreate: UserCollectionCreate = new UserCollectionCreate;
 
   constructor(private userCollectionService: UserCollectionService,
     private usageConfigService: UsageConfigService,
@@ -57,6 +60,23 @@ export class UserCollectionComponent implements OnInit {
         this.showLoading = false;
       });
     });
+  }
+
+  showAddCollectionPopin(): void {
+    this.showAddCollection = true;
+    this.userCollectionCreate = new UserCollectionCreate;
+  }
+
+  onSubmitAddCollection(addCollectionForm: NgForm): void {
+    const userId = this.route.snapshot.paramMap.get('id') || '';
+    this.userCollectionService.createCollection(userId, this.userCollectionCreate).subscribe(userCollection => this.userCollections.push(userCollection));
+    addCollectionForm.resetForm();
+    this.showAddCollection = false
+  }
+
+  onAnnulerClick(addCollectionForm: NgForm): void {
+    addCollectionForm.resetForm();
+    this.showAddCollection = false
   }
 
 }
