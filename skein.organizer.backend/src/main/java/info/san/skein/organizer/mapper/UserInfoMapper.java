@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValueMappingStrategy;
 
+import info.san.skein.organizer.model.QuickRefValue;
 import info.san.skein.organizer.model.User;
 import info.san.skein.organizer.model.UserCollection;
 import info.san.skein.organizer.rest.dto.model.UserInfoDto;
@@ -31,9 +32,13 @@ public interface UserInfoMapper {
 	}
 	
 	@Mapping(target = "skeinPossessions", ignore = true)
+	@Mapping(target = "collection.quickRef", ignore = true)
 	UserInfoDto.UserCollectionDto mapUserCollection(UserCollection userCollection);
 	
 	UserInfoDto.UserCollectionDto mapUserCollectionWithSkeinPossessions(UserCollection userCollection);
+	
+	@Mapping(target = "skeinId", source = "skein.id")
+	UserInfoDto.UserCollectionDto.CollectionDto.QuickRefDto.QuickRefValueDto map(QuickRefValue quickRefValue);
 	
 	default Collection<UserInfoDto.UserCollectionDto> mapUserCollections(Collection<UserCollection> userCollections) {
 		return userCollections.stream().map(this::mapUserCollection).toList();

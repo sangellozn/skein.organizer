@@ -110,7 +110,29 @@ public class UserInfoDto {
 			
 			private BrandDto brand;
 			
+			private QuickRefDto quickRef;
 			
+			@Getter
+			@Setter
+			public static final class QuickRefDto {
+				
+				private String id;
+				
+				private Collection<QuickRefValueDto> quickRefValues;
+				
+				@Getter
+				@Setter
+				public static final class QuickRefValueDto {
+					
+					private String id;
+					
+					private String name;
+					
+					private String skeinId;
+					
+				}
+				
+			}
 			
 			@Getter
 			@Setter

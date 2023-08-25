@@ -61,7 +61,7 @@ create table user_info (last_connection timestamp,
 	primary key (id)
 );
 
-create table user_collection (collection_id varchar(36), 
+create table user_collection (collection_id varchar(36) not null, 
 	id varchar(36) not null, 
 	usage_config_id varchar(36) not null, 
 	user_info_id varchar(36) not null, 
@@ -70,6 +70,22 @@ create table user_collection (collection_id varchar(36),
 	foreign key (collection_id) references collection(id),
 	foreign key (usage_config_id) references usage_config(id),
 	foreign key (user_info_id) references user_info(id)
+);
+
+create table quick_ref (id varchar(36) not null, 
+	collection_id varchar(36) not null,
+	primary key (id),
+	foreign key (collection_id) references collection(id)
+);
+
+create table quick_ref_value (id varchar(36) not null,
+	quick_ref_id varchar(36) not null,
+	name varchar(50) not null,
+	skein_id varchar(36) not null,
+	order_value integer not null,
+	primary key (id),
+	foreign key (quick_ref_id) references quick_ref(id),
+	foreign key (skein_id) references skein(id)
 );
 
 create unique index idx_brand_unique_name on brand(name);

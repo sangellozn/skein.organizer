@@ -1625,3 +1625,68 @@ INSERT INTO skein_possession (id,skein_id,usage_config_value_id,user_collection_
 	 ('db746817-fd2a-466c-a1f7-eb3bad45d89a','e21ea162-d9e9-4a81-a60b-ec3db8e18630','d0262ba4-b02a-418d-b7d9-cf8319a22cc9','85caab25-7d4d-4c40-915f-b62e3a7af50e',0);
 INSERT INTO skein_possession (id,skein_id,usage_config_value_id,user_collection_id,stock) VALUES
 	 ('8e88e7b3-f097-4c08-8d0c-564d8d6e585e','d1d2e5d9-0551-4f15-840e-59336fd59bdd','d0262ba4-b02a-418d-b7d9-cf8319a22cc9','85caab25-7d4d-4c40-915f-b62e3a7af50e',0);
+
+INSERT INTO quick_ref
+(id, collection_id)
+VALUES('c4f06d5e-6dc5-45cb-9112-ba78533e6694', '99358076-9f2b-4031-a7f7-5b84bd938e65');
+
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('7028bdac-c315-41c2-872f-0292c60ad3db', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '1xx', '462c3743-a6ea-4fc3-a934-83498ad1729f', 0);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('51491990-4b81-4f57-862f-08de19d35179', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '2xx', '65a9c601-bc19-4a21-b986-9329dcdb0dde', 1);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('0b45836f-3096-49f7-9f47-648b530f7a9a', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '3xx', 'ce854961-3699-4b5b-bfd7-716c2cbfa419', 2);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('61122021-967c-496c-ac9c-234a6f0defb7', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '4xx', '4ff602f8-fcde-4deb-abad-0078e19b30ca', 3);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('3580c5ed-c453-41aa-8f2e-8d8fb539b8b3', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '5xx', '75a148d2-2bf8-4ccb-b072-fc3000045dcf', 4);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('c1bec426-edef-48d0-9bb4-1c599021e6f4', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '6xx', 'e87e03a9-1eea-4215-9250-5a3bc791413d', 5);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('d9a56dac-3b67-4aa6-914a-d729dedd791d', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '7xx', '0ff23691-d47a-4551-b3c9-bf083cbede7c', 6);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('f813e306-bac4-42e6-93ac-8fc0a56dbcdf', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '8xx', 'c7a2f366-df55-4e90-a92b-772e3fde361f', 7);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('051b0f6e-535d-4901-850a-205ecab5d574', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '9xx', '12f6e94b-7966-4ea5-9646-846d05412480', 8);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('1266a6a2-bfd9-42c1-80b9-5842863bf9b7', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '30xx', 'deb8811c-3dbe-4595-aac6-19d6121061c0', 9);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('10554d90-8843-4a79-9e51-2634f6265a78', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '33xx', '921bbc62-14ff-48dc-8131-36af1973d1d1', 10);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('01a2ac23-454d-4f1b-b64b-a516c8e48deb', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '36xx', 'a3b74d33-717f-41b9-9716-501ff0faeef3', 11);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('75ff6b15-6211-42d4-a4ba-6e2c20f08bc4', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '37xx', '87a0005e-1573-4738-bb72-890258d8233b', 12);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('6df12a05-f750-4929-b1aa-d9e24c1e7bd9', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', '38xx', '5d1c0b34-4df6-41f6-8687-7b7360a29bd9', 13);
+
+INSERT INTO quick_ref_value
+(id, quick_ref_id, name, skein_id, order_value)
+VALUES('0a80779b-0f6e-4dbb-9b5d-f974bf717555', 'c4f06d5e-6dc5-45cb-9112-ba78533e6694', 'BLxx', 'b56cc76e-4b01-48e8-964f-d5ecb5eaa6d5', 14);

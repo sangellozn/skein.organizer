@@ -32,6 +32,7 @@ public interface CollectionMapper {
 
 	@Mapping(target = "skeins", ignore = true)
 	@Mapping(target = "brand", ignore = true)
+	@Mapping(target = "quickRef", ignore = true)
 	void update(CollectionDto collectionDto, @MappingTarget Collection collection);
 	
 	CollectionDto.BrandDto map(Brand brand);
