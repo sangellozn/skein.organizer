@@ -38,7 +38,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-skeinPossession>
             <tr class="{{skeinPossession.skein.discontinued ? 'skein-discontinued' : ''}}">
-                <td id="skein-{{skeinPossession.skein.number}}">{{ skeinPossession.skein.number }}</td>
+                <td id="{{skeinPossession.skein.id}}">{{ skeinPossession.skein.number }}</td>
                 <td>{{ skeinPossession.skein.description }}</td>
                 <td><div class="skein-color" style="{{'background-color: #' + skeinPossession.skein.color}}"></div></td>
                 <td><p-dropdown [options]="usageConfig.usageConfigValues" [(ngModel)]="skeinPossession.usageConfigValue.id" optionLabel="name" optionValue="id"
