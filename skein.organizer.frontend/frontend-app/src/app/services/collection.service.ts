@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { catchError, Observable } from 'rxjs';
-import { environment } from 'src/environnements/environnement';
+import { environment } from 'src/environments/environment';
 import { Collection } from '../beans/collection';
 import { AbstractAppService } from './abstract-app.service';
 

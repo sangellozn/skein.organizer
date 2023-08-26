@@ -6,3 +6,21 @@
 .skein-discontinued {
     text-decoration: line-through;
 }
+
+#quick-ref {
+    position: sticky;
+    top: 60px;
+    align-self: start;
+    margin-right: 25px;
+    text-align: end;
+}
+
+#quick-ref ul {
+    list-style-type: none;
+}
+
+#quick-ref ul a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}

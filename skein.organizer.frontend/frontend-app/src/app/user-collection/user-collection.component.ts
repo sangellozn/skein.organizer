@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Collection } from '../beans/collection';
+import { QuickRef } from '../beans/quick-ref';
+import { QuickRefValue } from '../beans/quick-ref-value';
 import { SkeinPossession } from '../beans/skein-possession';
 import { UsageConfig } from '../beans/usage-config';
 import { UserCollection } from '../beans/user-collection';
@@ -26,6 +28,7 @@ export class UserCollectionComponent implements OnInit {
   usageConfig: UsageConfig;
   usageConfigs: UsageConfig[] = [];
   userCollectionCreate: UserCollectionCreate = new UserCollectionCreate;
+  quickRef: QuickRef;
 
   constructor(private userCollectionService: UserCollectionService,
     private usageConfigService: UsageConfigService,
@@ -56,7 +59,8 @@ export class UserCollectionComponent implements OnInit {
     this.userCollectionService.getSkeinPossession(userId, collectionId).subscribe(userCollection => {
       this.usageConfigService.getUsageConfig(userCollection.usageConfig.id).subscribe(usageConfig => {
         this.usageConfig = usageConfig;
-        this.skeinPossessions = userCollection.skeinPossessions
+        this.skeinPossessions = userCollection.skeinPossessions;
+        this.quickRef = userCollection.collection.quickRef;
         this.showLoading = false;
       });
     });
@@ -77,6 +81,10 @@ export class UserCollectionComponent implements OnInit {
   onAnnulerClick(addCollectionForm: NgForm): void {
     addCollectionForm.resetForm();
     this.showAddCollection = false
+  }
+
+  scrollToSkein(quickRefValue: QuickRefValue): void {
+    document.querySelector('[id=skein-' + quickRefValue.skeinId + ']')?.scrollIntoView();
   }
 
 }

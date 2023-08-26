@@ -4,7 +4,7 @@ import { MessageService } from 'primeng/api';
 
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { environment } from 'src/environnements/environnement';
+import { environment } from 'src/environments/environment';
 import { SkeinPossessionUpdate } from '../beans/skein-possession-update';
 import { AbstractAppService } from './abstract-app.service';
 

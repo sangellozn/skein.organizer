@@ -26,3 +26,5 @@ replay_pid*
 /.settings
 /target
 /skein.organizer.backend/skein-organizer.db
+/skein.organizer.backend/src/main/resources/application-pi.properties
+/skein.organizer.frontend/package-lock.json

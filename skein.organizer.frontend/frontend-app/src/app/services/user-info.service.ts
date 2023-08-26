@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MessageService } from 'primeng/api';
 
-import { environment } from 'src/environnements/environnement';
+import { environment } from 'src/environments/environment';
 
 import { UserInfo } from '../beans/user-info';
 

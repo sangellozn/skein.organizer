@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { environment } from 'src/environnements/environnement';
+import { environment } from 'src/environments/environment';
 import { UsageConfig } from '../beans/usage-config';
 import { AbstractAppService } from './abstract-app.service';
 
