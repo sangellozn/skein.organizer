@@ -31,7 +31,7 @@ public class UserInfoDto {
 	
 	@Getter
 	@Setter
-	public static final class UserCollectionDto {
+	public static final class UserCollectionDto implements Comparable<UserCollectionDto> {
 	
 		private String id;
 		
@@ -144,6 +144,11 @@ public class UserInfoDto {
 				
 			}
 			
+		}
+
+		@Override
+		public int compareTo(UserCollectionDto o) {
+			return this.getName().compareTo(o.getName());
 		}
 		
 	}

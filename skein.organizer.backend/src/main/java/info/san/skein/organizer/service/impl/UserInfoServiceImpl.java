@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -119,7 +120,10 @@ public class UserInfoServiceImpl implements IUserInfoService {
 	@Override
 	@Transactional(readOnly = true)
 	public Collection<UserCollectionDto> findAllCollection(String id) {
-		return userInfoMapper.mapUserCollections(userRepository.getReferenceById(id).getUserCollections());
+		List<UserCollectionDto> userCollections = new ArrayList<>(userInfoMapper.mapUserCollections(userRepository.getReferenceById(id).getUserCollections()));
+		userCollections.sort(Comparator.naturalOrder());
+		
+		return userCollections;
 	}
 
 	@Override

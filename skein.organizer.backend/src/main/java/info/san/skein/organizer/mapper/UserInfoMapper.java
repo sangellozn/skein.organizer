@@ -1,6 +1,7 @@
 package info.san.skein.organizer.mapper;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -40,7 +41,7 @@ public interface UserInfoMapper {
 	@Mapping(target = "skeinId", source = "skein.id")
 	UserInfoDto.UserCollectionDto.CollectionDto.QuickRefDto.QuickRefValueDto map(QuickRefValue quickRefValue);
 	
-	default Collection<UserInfoDto.UserCollectionDto> mapUserCollections(Collection<UserCollection> userCollections) {
+	default List<UserInfoDto.UserCollectionDto> mapUserCollections(Collection<UserCollection> userCollections) {
 		return userCollections.stream().map(this::mapUserCollection).toList();
 	}
 	
