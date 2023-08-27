@@ -18,6 +18,8 @@ import info.san.skein.organizer.rest.dto.model.UserCollectionCreationDto;
 import info.san.skein.organizer.rest.dto.model.UserInfoDto;
 import info.san.skein.organizer.rest.dto.model.UserInfoDto.Create;
 import info.san.skein.organizer.rest.dto.model.UserInfoDto.Update;
+import info.san.skein.organizer.rest.dto.model.order.OrderCriteriaDto;
+import info.san.skein.organizer.rest.dto.model.order.OrderResultDto;
 import info.san.skein.organizer.service.IUserInfoService;
 import jakarta.validation.groups.Default;
 
@@ -70,6 +72,11 @@ public class UserInfoController {
     @GetMapping("{id}/collections/{collectionId}")
     public UserInfoDto.UserCollectionDto getCollectionContent(@PathVariable("collectionId") String collectionId) {
     	return userInfoService.getCollectionContent(collectionId);
+    }
+    
+    @PostMapping("{id}/collections/{collectionId}/prepare-order")
+    public OrderResultDto preparpeOrder(@PathVariable("collectionId") String collectionId, @RequestBody @Validated OrderCriteriaDto orderCriteriaDto) {
+    	return userInfoService.preparpeOrder(collectionId, orderCriteriaDto);
     }
     
 }

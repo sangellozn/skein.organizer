@@ -1,8 +1,11 @@
 package info.san.skein.organizer.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.data.domain.Sort;
@@ -26,6 +29,11 @@ import info.san.skein.organizer.repository.UserRepository;
 import info.san.skein.organizer.rest.dto.model.UserCollectionCreationDto;
 import info.san.skein.organizer.rest.dto.model.UserInfoDto;
 import info.san.skein.organizer.rest.dto.model.UserInfoDto.UserCollectionDto;
+import info.san.skein.organizer.rest.dto.model.order.OrderCriteriaDto;
+import info.san.skein.organizer.rest.dto.model.order.OrderCriteriaDto.Condition;
+import info.san.skein.organizer.rest.dto.model.order.OrderCriteriaDto.Operator;
+import info.san.skein.organizer.rest.dto.model.order.OrderResultDto;
+import info.san.skein.organizer.rest.dto.model.order.OrderResultDto.SkeinDto;
 import info.san.skein.organizer.service.IUserInfoService;
 
 @Service
@@ -151,6 +159,58 @@ public class UserInfoServiceImpl implements IUserInfoService {
 	@Transactional(readOnly = true)
 	public UserCollectionDto getCollectionContent(String userCollectionId) {
 		return userInfoMapper.mapUserCollectionWithSkeinPossessions(userCollectionRepository.getReferenceById(userCollectionId));
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public OrderResultDto preparpeOrder(String userCollectionId, OrderCriteriaDto orderCriteriaDto) {
+		OrderResultDto orderResultDto = new OrderResultDto();
+		
+		UserCollection userCollection = userCollectionRepository.getReferenceById(userCollectionId);
+		
+		Predicate<SkeinPossession> predicate = buildPredicate(orderCriteriaDto);
+		
+		List<SkeinPossession> skeinPossessions = new ArrayList<>(userCollection.getSkeinPossessions());
+		Collections.sort(skeinPossessions);
+		
+		for (SkeinPossession skeinPossession : skeinPossessions) {
+			if (predicate.test(skeinPossession)) {
+				orderResultDto.getSkeinsToOrder().add(new SkeinDto(skeinPossession.getSkein().getId(), skeinPossession.getSkein().getNumber()));
+			}
+		}
+		
+		return orderResultDto;
+	}
+	
+	private Predicate<SkeinPossession> buildPredicate(OrderCriteriaDto orderCriteriaDto) {
+		UsageConfigValue usageConfigValue = usageConfigValueRepository.getReferenceById(orderCriteriaDto.getUsageConfigValueId());
+		
+		Predicate<SkeinPossession> basePredicate;
+		
+		if (orderCriteriaDto.getUsageConfigValueOperator() == Operator.LT) {
+			basePredicate = (skeinPossession) -> skeinPossession.getUsageConfigValue().getNumericValue() < usageConfigValue.getNumericValue();
+		} else {
+			basePredicate = (skeinPossession) -> skeinPossession.getUsageConfigValue().getNumericValue() <= usageConfigValue.getNumericValue();
+		}
+		
+		if (orderCriteriaDto.hasConditionOnStock()) {
+			Predicate<SkeinPossession> stockPredicate;
+			
+			if (orderCriteriaDto.getStockOperator() == Operator.LT) {
+				stockPredicate = (skeinPossession) -> skeinPossession.getStock() < orderCriteriaDto.getStockValue();
+			} else {
+				stockPredicate = (skeinPossession) -> skeinPossession.getStock() <= orderCriteriaDto.getStockValue();
+			}
+			
+			if (orderCriteriaDto.getCondition() == Condition.AND) {
+				basePredicate = basePredicate.and(stockPredicate);
+			} else {
+				basePredicate = basePredicate.or(stockPredicate);
+			}
+		}
+		
+		return basePredicate;
+		
 	}
 
 }

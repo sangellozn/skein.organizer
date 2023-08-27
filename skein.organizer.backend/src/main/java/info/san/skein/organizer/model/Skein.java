@@ -14,7 +14,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Skein {
+public class Skein implements Comparable<Skein> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -38,5 +38,10 @@ public class Skein {
     
     @ManyToMany(mappedBy = "skeins")
     private Set<Collection> collections;
+
+	@Override
+	public int compareTo(Skein o) {
+		return Integer.compare(this.getOrder(), o.getOrder());
+	}
 	
 }

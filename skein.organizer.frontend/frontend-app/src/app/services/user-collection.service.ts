@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UserCollection } from '../beans/user-collection';
 import { UserCollectionCreate } from '../beans/user-collection-create';
+import { PrepareOrderCriteria } from '../beans/prepare-order-criteria';
+import { Skein } from '../beans/skein';
+import { PrepareOrderResult } from '../beans/prepare-order-result';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +33,11 @@ export class UserCollectionService extends AbstractAppService {
 
   createCollection(id: string, userCollectionCreate: UserCollectionCreate): Observable<UserCollection> {
     return this.http.post<UserCollection>(`${this.userInfosUrl}/${id}/collections`, userCollectionCreate).pipe(catchError(this.throwError()));
+  }
+
+  prepareOrder(id: string, prepareOrderCriteria: PrepareOrderCriteria): Observable<PrepareOrderResult> {
+    return this.http.post<PrepareOrderResult>(`${this.userInfosUrl}/${id}/collections/${prepareOrderCriteria.collectionId}/prepare-order`,
+      prepareOrderCriteria).pipe(catchError(this.throwError()));
   }
 
 }

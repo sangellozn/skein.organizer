@@ -12,7 +12,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class SkeinPossession {
+public class SkeinPossession implements Comparable<SkeinPossession> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -30,5 +30,10 @@ public class SkeinPossession {
 	
 	@Column(name = "stock", nullable = false)
 	private int stock;
+
+	@Override
+	public int compareTo(SkeinPossession o) {
+		return this.getSkein().compareTo(o.getSkein());
+	}
 	
 }

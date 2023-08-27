@@ -22,6 +22,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -53,7 +54,8 @@ import { UserCollectionComponent } from './user-collection/user-collection.compo
     InputTextModule,
     TagModule,
     DialogModule,
-    DividerModule
+    DividerModule,
+    InputSwitchModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
