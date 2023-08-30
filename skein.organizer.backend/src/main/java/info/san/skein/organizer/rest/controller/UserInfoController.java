@@ -21,7 +21,7 @@ import info.san.skein.organizer.rest.dto.model.UserInfoDto.Update;
 import info.san.skein.organizer.rest.dto.model.order.OrderCriteriaDto;
 import info.san.skein.organizer.rest.dto.model.order.OrderResultDto;
 import info.san.skein.organizer.service.IUserInfoService;
-import jakarta.validation.groups.Default;
+import javax.validation.groups.Default;
 
 @RestController
 @RequestMapping("api/user-infos")

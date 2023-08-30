@@ -6,13 +6,15 @@
 	<packaging>pom</packaging>
 	<name>skein.organizer</name>
 	<description>Simple webapp to organize skeins and keep count.</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.1</version>
+		<version>2.7.7</version>
 	</parent>
 	<modules>
-		<module>skein.organizer.backend</module>
 		<module>skein.organizer.frontend</module>
 		<module>skein.organizer.delivery</module>
 	</modules>

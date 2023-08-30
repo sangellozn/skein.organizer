@@ -18,7 +18,7 @@ import info.san.skein.organizer.rest.dto.model.CollectionDto;
 import info.san.skein.organizer.rest.dto.model.CollectionDto.Create;
 import info.san.skein.organizer.rest.dto.model.CollectionDto.Update;
 import info.san.skein.organizer.service.ICollectionService;
-import jakarta.validation.groups.Default;
+import javax.validation.groups.Default;
 
 @RestController
 @RequestMapping("api/collections")

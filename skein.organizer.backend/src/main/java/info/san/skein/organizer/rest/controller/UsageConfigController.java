@@ -16,7 +16,7 @@ import info.san.skein.organizer.rest.dto.model.UsageConfigDto;
 import info.san.skein.organizer.rest.dto.model.UsageConfigDto.Create;
 import info.san.skein.organizer.rest.dto.model.UsageConfigDto.Update;
 import info.san.skein.organizer.service.IUsageConfigService;
-import jakarta.validation.groups.Default;
+import javax.validation.groups.Default;
 
 @RestController
 @RequestMapping("api/usage-configs")

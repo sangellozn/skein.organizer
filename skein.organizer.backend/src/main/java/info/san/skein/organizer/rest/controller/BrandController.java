@@ -16,7 +16,7 @@ import info.san.skein.organizer.rest.dto.model.BrandDto;
 import info.san.skein.organizer.rest.dto.model.BrandDto.Create;
 import info.san.skein.organizer.rest.dto.model.BrandDto.Update;
 import info.san.skein.organizer.service.IBrandService;
-import jakarta.validation.groups.Default;
+import javax.validation.groups.Default;
 
 @RestController
 @RequestMapping("api/brands")

@@ -2,14 +2,14 @@ package info.san.skein.organizer.model;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +20,8 @@ import lombok.Setter;
 public class User {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, length = 36)
-	private String id;
+	private String id = UUID.randomUUID().toString();
 	
 	@Column(name = "name", nullable = false, length = 150)
 	private String name;

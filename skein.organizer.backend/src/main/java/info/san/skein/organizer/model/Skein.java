@@ -1,13 +1,13 @@
 package info.san.skein.organizer.model;
 
 import java.util.Set;
+import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,9 +17,8 @@ import lombok.Setter;
 public class Skein implements Comparable<Skein> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, length = 36)
-	private String id;
+	private String id = UUID.randomUUID().toString();
 	
     @Column(name = "number_value", nullable = false, length = 25)
 	private String number;

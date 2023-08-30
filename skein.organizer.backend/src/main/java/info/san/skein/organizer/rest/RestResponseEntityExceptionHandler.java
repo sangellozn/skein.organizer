@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -18,7 +19,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import org.sqlite.SQLiteException;
 
 import info.san.skein.organizer.rest.dto.ErrorDto;
-import jakarta.persistence.EntityNotFoundException;
 
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
@@ -41,8 +41,9 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
     
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-        Map<String, String> fieldsErrors = ex.getBindingResult().getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+    		HttpHeaders headers, HttpStatus status, WebRequest request) {
+    	Map<String, String> fieldsErrors = ex.getBindingResult().getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
         List<String> globalErrors = ex.getBindingResult().getGlobalErrors().stream().map(ObjectError::getDefaultMessage).toList();
         
         return new ResponseEntity<>(Map.of("errors", Map.of("global", globalErrors, "fields", fieldsErrors)), new HttpHeaders(), HttpStatus.BAD_REQUEST);

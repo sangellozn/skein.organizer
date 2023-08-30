@@ -2,15 +2,15 @@ package info.san.skein.organizer.model;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +20,8 @@ import lombok.Setter;
 public class UserCollection {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, length = 36)
-	private String id;
+	private String id = UUID.randomUUID().toString();
 	
 	@Column(name = "name", nullable = false, length = 150)
 	private String name;
